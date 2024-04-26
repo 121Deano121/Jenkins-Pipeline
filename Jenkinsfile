@@ -16,7 +16,16 @@ pipeline {
         success {
             mail to: "ilikebeans53@gmail.com",
             subject: "Build Status Email",
-            body: "Build was Successful!"
+            body: "Build was Successful!",
+            attachLog: true
+        }
+        failure {
+            mail to: 'ilikebeans53@gmail.com',
+            subject: 'CI/CD Pipeline Notification. ',
+            body: 'Your build failed. Please investigate.❌ ❌ ❌ ',
+            attachLog: true
+                      
+        }
             
             
         }
@@ -38,7 +47,16 @@ pipeline {
         success {
             mail to: "ilikebeans53@gmail.com",
             subject: "Build Status Email",
-            body: "Build was Successful!"
+            body: "Build was Successful!",
+            attachLog: true
+        }
+        failure {
+            mail to: 'ilikebeans53@gmail.com',
+            subject: 'CI/CD Pipeline Notification. ',
+            body: 'Your build failed. Please investigate.❌ ❌ ❌ ',
+            attachLog: true
+                      
+        }
             
         }
     }

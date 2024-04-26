@@ -1,5 +1,5 @@
 pipeline {
-    agent any  // This specifies that the pipeline can run on any available agent
+    agent any
 
     stages {
         stage('Build') {
@@ -13,24 +13,16 @@ pipeline {
                 echo 'Run unit tests with JUnit and integration tests with TestNG.'
             }
             post {
-        success {
-            mail to: "ilikebeans53@gmail.com",
-            subject: "Build Status Email",
-            body: "Build was Successful!"
-            
-        }
-        
-            
-            
-        }
-    }
+                success {
+                    emailext attachLog: true, recipients: 'ilikebeans53@gmail.com', subject: 'Build Status Email', body: 'Build was Successful!'
+                }
+            }
         }
 
         stage('Code Analysis') {
             steps {
                 echo 'Analyze the source code with SonarQube to detect bugs, code smells, and maintainability issues.'
             }
-
         }
 
         stage('Security Scan') {
@@ -38,16 +30,10 @@ pipeline {
                 echo 'Scan the codebase for security vulnerabilities using OWASP ZAP.'
             }
             post {
-        success {
-            mail to: "ilikebeans53@gmail.com",
-            subject: "Build Status Email",
-            body: "Build was Successful!"
-            
-        }
-        
-            
-        }
-    }
+                success {
+                    emailext attachLog: true, recipients: 'ilikebeans53@gmail.com', subject: 'Build Status Email', body: 'Build was Successful!'
+                }
+            }
         }
 
         stage('Deploy to Staging') {
@@ -75,5 +61,3 @@ pipeline {
         }
     }
 }
-
-

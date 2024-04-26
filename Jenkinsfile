@@ -19,6 +19,8 @@ pipeline {
             mail to: "ilikebeans53@gmail.com",
             subject: "Unit and Integration Tests Email",
             body: "Unit and Integration Tests was Successful!"
+            AttachLog: true
+        
         }
             }
             

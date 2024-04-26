@@ -16,7 +16,9 @@ pipeline {
         success {
             mail to: "ilikebeans53@gmail.com",
             subject: "Build Status Email",
-            body: "Build was Successful!"
+            body: "Build was Successful!",
+                attachLog : true
+            
             
         }
     }
@@ -37,7 +39,8 @@ pipeline {
         success {
             mail to: "ilikebeans53@gmail.com",
             subject: "Build Status Email",
-            body: "Build was Successful!"
+            body: "Build was Successful!",
+                attachLog : true
             
         }
     }

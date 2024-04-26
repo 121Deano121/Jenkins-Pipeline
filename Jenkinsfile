@@ -44,8 +44,8 @@ pipeline {
             success {
             attachLog : true 
             mail to: "ilikebeans53@gmail.com",
-            subject: "Unit and Integration Tests Email",
-            body: "Unit and Integration Tests was Successful!"
+            subject: "Security Scan Email",
+            body: "Security Scan was Successful!"
                 
             
         }

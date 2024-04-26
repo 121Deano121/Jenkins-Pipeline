@@ -18,7 +18,7 @@ pipeline {
             success {
             subject: "SUCCESS: Security Scan Completed",
                         body: "Security Scan completed successfully. See attached logs for details.",
-                        to: "${EMAIL_RECIPIENT}",
+                        to: "ilikebeans53@gmail.com",
                         attachLog: true
 
         }
@@ -42,7 +42,7 @@ pipeline {
             success {
             subject: "SUCCESS: Security Scan Completed",
                         body: "Security Scan completed successfully. See attached logs for details.",
-                        to: "${EMAIL_RECIPIENT}",
+                        to: "ilikebeans53@gmail.com",
                         attachLog: true
 
             

@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Build, Compile and package the source code using Maven.'
+                echo 'Compile and package the source code using Maven.'
             }
         }
 
@@ -12,50 +12,40 @@ pipeline {
             steps {
                 echo 'Run unit tests with JUnit and integration tests with TestNG.'
             }
-
-            post{
-
-            success {
+            post {
+        success {
             mail to: "ilikebeans53@gmail.com",
             subject: "Build Status Email",
-            body: "Security Scan completed successfully. See attached logs for details."
+            body: "Build was Successful!"
             
-                       
-
         }
-            }
-            
-
+    }
         }
 
         stage('Code Analysis') {
             steps {
                 echo 'Analyze the source code with SonarQube to detect bugs, code smells, and maintainability issues.'
             }
+
         }
 
         stage('Security Scan') {
             steps {
                 echo 'Scan the codebase for security vulnerabilities using OWASP ZAP.'
             }
-            post{
-
-            success {
-                mail to: "ilikebeans53@gmail.com"
-                subject: "SUCCESS: Security Scan Completed",
-                body: "Security Scan completed successfully. See attached logs for details."
-                        
-                      
-
+            post {
+        success {
+            mail to: "ilikebeans53@gmail.com",
+            subject: "Build Status Email",
+            body: "Build was Successful!"
             
         }
-            }
-
+    }
         }
 
         stage('Deploy to Staging') {
             steps {
-                echo 'Deploy the application to staging server using Docker and AWS EC2 instances.'
+                echo 'Deploy the application to staging using Docker and AWS EC2 instances.'
             }
         }
 
@@ -78,7 +68,5 @@ pipeline {
         }
     }
 }
-
-
 
 

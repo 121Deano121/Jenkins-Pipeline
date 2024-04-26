@@ -1,10 +1,15 @@
 pipeline {
-    agent any  // This specifies that the pipeline can run on any available agent
+    agent any  // Specifies that the pipeline can run on any available agent
+
+    environment {
+        // Define any global environment variables here, like the recipient email
+        EMAIL_RECIPIENT = 'ilikebeans53@gmail.com'
+    }
 
     stages {
         stage('Build') {
             steps {
-                echo 'Build, Compile and package the source code using Maven.'
+                echo 'Compile and package the source code using Maven.'
             }
         }
 
@@ -12,24 +17,24 @@ pipeline {
             steps {
                 echo 'Run unit tests with JUnit and integration tests with TestNG.'
             }
-
-            post{
-
-            success {
-          
-            mail to: "ilikebeans53@gmail.com",
-            subject: "Unit and Integration Tests Email",
-            body: "Unit and Integration Tests was Successful!",
-                attachLog : true
-                
-            
-                
-            
-        
-        }
+            post {
+                success {
+                    emailext (
+                        subject: "SUCCESS: Unit and Integration Tests Completed",
+                        body: "Unit and Integration Tests completed successfully. See attached logs for details.",
+                        to: "${EMAIL_RECIPIENT}",
+                        attachLog: true
+                    )
+                }
+                failure {
+                    emailext (
+                        subject: "FAILURE: Unit and Integration Tests",
+                        body: "Unit and Integration Tests failed. See attached logs for details.",
+                        to: "${EMAIL_RECIPIENT}",
+                        attachLog: true
+                    )
+                }
             }
-            
-
         }
 
         stage('Code Analysis') {
@@ -42,25 +47,29 @@ pipeline {
             steps {
                 echo 'Scan the codebase for security vulnerabilities using OWASP ZAP.'
             }
-            post{
-
-            success {
-            
-            mail to: "ilikebeans53@gmail.com",
-            subject: "Security Scan Email",
-            body: "Security Scan was Successful!",
-                attachLog : true
-            
-                
-            
-        }
+            post {
+                success {
+                    emailext (
+                        subject: "SUCCESS: Security Scan Completed",
+                        body: "Security Scan completed successfully. See attached logs for details.",
+                        to: "${EMAIL_RECIPIENT}",
+                        attachLog: true
+                    )
+                }
+                failure {
+                    emailext (
+                        subject: "FAILURE: Security Scan",
+                        body: "Security Scan failed. See attached logs for details.",
+                        to: "${EMAIL_RECIPIENT}",
+                        attachLog: true
+                    )
+                }
             }
-
         }
 
         stage('Deploy to Staging') {
             steps {
-                echo 'Deploy the application to staging server using Docker and AWS EC2 instances.'
+                echo 'Deploy the application to staging using Docker and AWS EC2 instances.'
             }
         }
 
@@ -83,6 +92,3 @@ pipeline {
         }
     }
 }
-
-
-

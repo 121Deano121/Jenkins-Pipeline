@@ -16,9 +16,10 @@ pipeline {
             post{
 
             success {
-            subject: "SUCCESS: Security Scan Completed",
-                        body: "Security Scan completed successfully. See attached logs for details.",
-                        mail to: "ilikebeans53@gmail.com",
+            mail to: "ilikebeans53@gmail.com",
+            subject: "Build Status Email",
+            body: "Security Scan completed successfully. See attached logs for details."
+            
                        
 
         }
@@ -40,9 +41,10 @@ pipeline {
             post{
 
             success {
-            subject: "SUCCESS: Security Scan Completed",
-                        body: "Security Scan completed successfully. See attached logs for details.",
-                        mail to: "ilikebeans53@gmail.com",
+                mail to: "ilikebeans53@gmail.com"
+                subject: "SUCCESS: Security Scan Completed",
+                body: "Security Scan completed successfully. See attached logs for details."
+                        
                       
 
             

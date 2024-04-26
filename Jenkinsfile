@@ -18,8 +18,8 @@ pipeline {
             success {
             subject: "SUCCESS: Security Scan Completed",
                         body: "Security Scan completed successfully. See attached logs for details.",
-                        to: "ilikebeans53@gmail.com",
-                        
+                        mail to: "ilikebeans53@gmail.com",
+                       
 
         }
             }
@@ -42,8 +42,8 @@ pipeline {
             success {
             subject: "SUCCESS: Security Scan Completed",
                         body: "Security Scan completed successfully. See attached logs for details.",
-                        to: "ilikebeans53@gmail.com",
-                        
+                        mail to: "ilikebeans53@gmail.com",
+                      
 
             
         }
@@ -76,13 +76,6 @@ pipeline {
         }
     }
 }
-
-
-
-
-
-
-
 
 
 

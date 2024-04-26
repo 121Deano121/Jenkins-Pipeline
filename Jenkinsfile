@@ -16,8 +16,7 @@ pipeline {
                 success {
                     mail to: "ilikebeans53@gmail.com",
                         subject: "Build Successful - Unit and Integration Tests",
-                        body: "Build was successful!",
-                        attachLog: true  // This will attach the console log to the email
+                        body: "Build was successful!"
                 }
             }
         }
@@ -36,8 +35,7 @@ pipeline {
                 success {
                     mail to: "ilikebeans53@gmail.com",
                         subject: "Build Successful - Security Scan",
-                        body: "Build was successful!",
-                        attachLog: true  // This will attach the console log to the email
+                        body: "Build was successful!"
                 }
             }
         }

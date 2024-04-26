@@ -14,7 +14,10 @@ pipeline {
             }
             post {
                 success {
-                    emailext attachLog: true, recipients: 'ilikebeans53@gmail.com', subject: 'Build Status Email', body: 'Build was Successful!'
+                    mail to: "ilikebeans53@gmail.com",
+                        subject: "Build Successful - Unit and Integration Tests",
+                        body: "Build was successful!",
+                        attachLog: true  // This will attach the console log to the email
                 }
             }
         }
@@ -31,7 +34,10 @@ pipeline {
             }
             post {
                 success {
-                    emailext attachLog: true, recipients: 'ilikebeans53@gmail.com', subject: 'Build Status Email', body: 'Build was Successful!'
+                    mail to: "ilikebeans53@gmail.com",
+                        subject: "Build Successful - Security Scan",
+                        body: "Build was successful!",
+                        attachLog: true  // This will attach the console log to the email
                 }
             }
         }

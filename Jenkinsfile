@@ -34,9 +34,10 @@ pipeline {
             }
             post {
                 success {
-                    mail to: "dean74471@gmail.com",
-                        subject: "Build Successful - Security Scan",
-                        body: "Build was successful!"
+                    emailext subject: 'Build Successful - Secruity Scan',
+                      body: 'Your build was successful! ',
+                      to: 'dean74471@gmail.com',
+                      attachLog: true
                 }
             }
         }

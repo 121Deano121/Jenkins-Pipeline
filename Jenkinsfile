@@ -16,7 +16,7 @@ pipeline {
                 success {
                     emailext subject: 'Build Successful - Unit and Integration Tests',
                       body: 'Your build was successful! ',
-                      to: 'ilikebeans53@gmail.com',
+                      to: 'dean74471@gmail.com',
                       attachLog: true
                 }
             }
@@ -34,7 +34,7 @@ pipeline {
             }
             post {
                 success {
-                    mail to: "ilikebeans53@gmail.com",
+                    mail to: "dean74471@gmail.com",
                         subject: "Build Successful - Security Scan",
                         body: "Build was successful!"
                 }
